@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import food1 from '../Assets/food/food1.jpg';
 import food2 from '../Assets/food/food2.jpg';
 import food3 from '../Assets/food/food3.jpg';
-import cake1 from '../Assets/food/cake1.jpg';
+// import cake1 from '../Assets/food/cake1.jpg';
 import nonFood1 from '../Assets/food/nonfood1.jpg';
 import nonFood2 from '../Assets/food/nonfood2.png';
 import '../Style/style.css';
@@ -22,10 +22,10 @@ function Home({ cart, setCart }) {
             { id: 4, name: 'Chicken biriyani', img: nonFood1, price: 120 },
             { id: 5, name: 'Chicken rice', img: nonFood2, price: 90 }
         ],
-        cake: [
+        // cake: [
 
-            { id: 6, name: 'Dark cake', img: cake1, price: 25 }
-        ]
+        //     { id: 6, name: 'Dark cake', img: cake1, price: 25 }
+        // ]
     };
 
     const changeQty = (value, id) => {
@@ -58,10 +58,10 @@ function Home({ cart, setCart }) {
                 <h5 className='text-light px-3 mb-2 text-center '>Discover the best food</h5>
                 {Object.keys(food).map((key, i) => (
                     <>
-                        <h6 className='text-light px-3'>{key==='veg' ? 'Veg Food' : key === 'non_veg' ? 'Non-Veg Food' : 'Cakes'}</h6>
+                        <h6 className='sub-item px-3'>{key==='veg' ? 'Veg Item' : key === 'non_veg' ? 'Non-Veg Item' : 'Cakes'}</h6>
                         <div className='row col-12 '>
                             {
-                                food[key].map((item, index) => <div key={index} className='col-2 mx-3 mb-3'>
+                                food[key].map((item, index) => <div key={index} className='col-lg-2 col-md-4 col-12 mx-3 mb-3'>
                                     <div className='card'>
                                         <img alt='food' className='card-img-top p-2' src={item?.img} />
                                         <div className='card-body'>
@@ -69,7 +69,7 @@ function Home({ cart, setCart }) {
                                             {/* </div> */}
                                             <h6 className='text-danger mt-2'>{item.name}</h6>
                                             <div className='d-flex justify-content-between align-items-center'>
-                                                <span className='fw-bold'>Rs. {item.price}</span>
+                                                <span className='fw-bold text-nowrap'>Rs. {item.price}</span>
                                                 {
                                                     click?.[item.id] ? <div className='text-end'>
                                                         <button className='btn cart-add bg-danger me-2' style={{ boxShadow: 'none' }} onClick={() => { setClick({ [item.id]: false }) }}><i className='fas fa-close text-light'></i></button>

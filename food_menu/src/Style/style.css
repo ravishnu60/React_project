@@ -13,11 +13,15 @@
     padding-left: 11px;
 }
 
+.sub-item{
+    color: #6de76b;
+}
+
 .sidebar{
     position: fixed;
     top:0px;
     right: 0px;
-    width: 20%;
+    width: 45vh;
     background-color: #ffffff;
     height: 100vh;
     z-index: 9999;
