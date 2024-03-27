@@ -57,7 +57,7 @@ function Home({ cart, setCart }) {
             <div className='container-fluid'>
                 <h5 className='text-light px-3 mb-2 text-center '>Discover the best food</h5>
                 {Object.keys(food).map((key, i) => (
-                    <>
+                    <div key={i}>
                         <h6 className='sub-item px-3'>{key==='veg' ? 'Veg Item' : key === 'non_veg' ? 'Non-Veg Item' : 'Cakes'}</h6>
                         <div className='row col-12 '>
                             {
@@ -84,7 +84,7 @@ function Home({ cart, setCart }) {
                                 </div>)
                             }
                         </div>
-                    </>
+                    </div>
                 ))
                 }
             </div>
