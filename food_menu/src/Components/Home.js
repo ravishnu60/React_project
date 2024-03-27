@@ -64,7 +64,7 @@ function Home({ cart, setCart }) {
                                 food[key].map((item, index) => <div key={index} className='col-lg-2 col-md-4 col-12 mx-3 mb-3'>
                                     <div className='card'>
                                         <img alt='food' className='card-img-top p-2' src={item?.img} />
-                                        <div className='card-body'>
+                                        <div className='card-body pt-0'>
                                             {/* <div className='food-pic' style={{ backgroundImage: `url(${item.img})` }} > */}
                                             {/* </div> */}
                                             <h6 className='text-danger mt-2'>{item.name}</h6>
