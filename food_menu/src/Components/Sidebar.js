@@ -34,16 +34,16 @@ const deleteItem=(index)=>{
         <div className=''>
           {
             cartData?.length > 0 ? cartData?.map((item, index) => <div key={index} className='row align-items-center '>
-              <div className='col-5 p-0'>
-                <img src={item?.img} className='border border-secondary cart-pic' alt='cart food' />
+              <div className='col-4 p-0 overflow-hidden border border-secondary'>
+                <img src={item?.img} className='cart-pic' alt='cart food' />
               </div>
               <div className='col-4'>
-                <h6 className='fw-bold'>{item?.name}</h6>
+                <h6 className='fw-bold '>{item?.name}</h6>
                 <h6 className='text-danger'>Rs.{item?.price}</h6>
                 <input className='w-50' type='text' value={item?.qty} onChange={(e)=>changeQty(e.target.value, item, index)} />
               </div>
-              <div className='col-3 text-end'>
-                <span className='fw-bold mx-3 text-nowrap'>Rs. {item?.price * item?.qty}</span>
+              <div className='col-4 text-center'>
+                <span className='fw-bold me-3'>Rs. {item?.price * item?.qty}</span>
                 <i role='button' className='fas fa-trash text-danger' onClick={()=>deleteItem(index)}></i>
               </div>
               <hr className='mt-2'/>
