@@ -38,7 +38,7 @@ function Sidebar({ sideBar, cart }) {
                 <img src={item?.img} className='cart-pic' alt='cart food' />
               </div>
               <div className='col-1 mb-3'></div>
-              <div className='col-4 mb-3 text-center'>
+              <div className='col-4 mb-3 px-2'>
                 <h6 className='fw-bold'>{item?.name}</h6>
                 <h6 className='text-danger'>Rs.{item?.price}</h6>
                 <input className='w-50' type='text' value={item?.qty} onChange={(e) => changeQty(e.target.value, item, index)} />
