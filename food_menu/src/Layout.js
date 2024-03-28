@@ -13,6 +13,7 @@ function Layout() {
 
     return (
         <div>
+            <div className='navigate'></div>
             <Sidebar sideBar={{ get: sidebar, set: setSidebar }} cart={{ get: cart, set: setCart }} />
             <Header setSidebar={setSidebar} sidebar={sidebar} />
             <Home cart={cart} setCart={setCart} />
