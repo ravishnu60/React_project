@@ -2,9 +2,10 @@ import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import './App.css';
 import React from "react";
 
+const Home= React.lazy(()=>import('./Pages/Home'));
+const NoScreen= React.lazy(()=>import('./Pages/NoScreen'));
+
 function App() {
-  const Home = React.lazy(()=>import('./Pages/Home.js'));
-  const NoScreen = React.lazy(()=>import('./Pages/NoScreen.js'));
   return (
     <HashRouter>
       <Routes>
