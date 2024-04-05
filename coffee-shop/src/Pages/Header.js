@@ -3,10 +3,20 @@ import logo from '../Assets/logo.png';
 import '../Styles/style.css';
 
 function Header({cart, search}) {
+
+  const showItems=(type)=>{
+    if (type === 'search'){
+      search.set(!search.get);
+      cart.set(false);
+    }else{
+      cart.set(!cart.get);
+      search.set(false);
+    }
+  }
   
   return (
     <div className='fixed-top header'>
-      <nav class="navbar navbar-expand-lg fw-bold ">
+      <nav class="navbar navbar-expand-lg navbar-dark fw-bold ">
         <div className='container-fluid'>
           <a class="navbar-brand px-2" href="#main" >
             <img src={logo} alt='logo' width={40} />
@@ -40,8 +50,8 @@ function Header({cart, search}) {
               </li>
             </ul>
             <div>
-              <i className='fa fa-search pointer' onClick={()=>{search.set(!search.get)}}  />
-              <i className='fas fa-cart-shopping p-3 pointer' onClick={()=>{cart.set(!cart.get)}} />
+              <i className='fa fa-search pointer' onClick={()=>showItems('search')}  />
+              <i className='fas fa-cart-shopping p-3 pointer' onClick={()=>showItems('cart')} />
             </div>
           </div>
         </div>

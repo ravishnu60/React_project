@@ -49,20 +49,20 @@
 }
 
 .nav-item a {
-    color: #fff;
+    color: #fff !important;
     padding-bottom: 2px !important;
 
 }
 
 .nav-item a:hover {
-    color: #b8b1b1;
-    border-bottom: 1px solid #fff;
+    color: #b8b1b1 !important;
+    border-bottom: 1px solid #fff !important;;
 }
 
 /* Cart menu */
 .cart-menu {
     position: fixed;
-    top: 0px;
+    top: 65px;
     bottom: 0px;
     right: 0px;
     width: 0vh;
@@ -71,7 +71,7 @@
 }
 
 .open-menu {
-    width: 40vh;
+    width: 45vh;
 }
 
 /* Search */
