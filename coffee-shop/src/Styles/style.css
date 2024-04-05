@@ -1,0 +1,145 @@
+/* Common */
+
+.pointer {
+    cursor: pointer;
+}
+
+.form-control{
+    outline: none;
+    box-shadow:none !important;
+}
+
+/* Page not found */
+.img-size {
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.not-found h1 {
+    font-size: 700%;
+    color: #db2b0c83;
+
+}
+
+.not-found h2 {
+    font-size: 500%;
+    color: #ff6600c0;
+
+}
+
+.not-found h5 {
+    font-size: 200%;
+}
+
+.not-found button {
+    border: 2px solid #813204;
+    backdrop-filter: blur(15px);
+    font-weight: bold;
+    font-size: larger;
+    border-radius: 2px 20px 2px 20px;
+    background-color: #00000000;
+}
+
+/* header */
+.header {
+    background-color: #000000;
+    border-bottom: 1px solid #3b3b3b;
+}
+
+.nav-item a {
+    color: #fff;
+    padding-bottom: 2px !important;
+
+}
+
+.nav-item a:hover {
+    color: #b8b1b1;
+    border-bottom: 1px solid #fff;
+}
+
+/* Cart menu */
+.cart-menu {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 0vh;
+    z-index: 111;
+    transition: width .5s;
+}
+
+.open-menu {
+    width: 40vh;
+}
+
+/* Search */
+.search {
+    position: fixed;
+    width: 30%;
+    right: 70px;
+    transition: margin-top .5s;
+}
+
+.search .clear {
+    background-color: white !important;
+}
+
+.show-search {
+    margin-top: 6%;
+}
+
+/* Home */
+.tab {
+    min-height: 100vh;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+.home-content {
+    background: radial-gradient(#00000000, #000000), url('../Assets/coffee-home.jpg');
+}
+
+.home-sub H1 {
+    font-size: 8vh;
+    font-weight: bold;
+}
+
+.home-sub button,
+.about-content button {
+    background-color: #d3875b;
+    color: #fff;
+    font-weight: bold;
+    width: max-content;
+}
+
+/* About content */
+.about-content {
+    padding-top: 100px;
+}
+
+.about-content h1 {
+    font-size: 6vh;
+    color: #d3875b;
+    font-weight: bold;
+}
+
+.about-content span {
+    font-size: 6vh;
+}
+
+.about-content .row {
+    background-color: #1c1c22;
+    box-shadow: 1px 1px 10px 1px red;
+}
+
+.about-img {
+    overflow: hidden;
+}
+
+.about-img img {
+    height: 65vh;
+    width: 100%;
+}
