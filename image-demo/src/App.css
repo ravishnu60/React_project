@@ -1,4 +1,12 @@
-.nav-btn{
-  position:absolute;
+.invite_img {
+  height: 64vh;
+  border: 2px solid #ecb4ffd1;
+  margin-top: 5px;
+  border-radius: 10px
+}
 
+.map{
+  margin-top: 5px;
+  overflow:hidden;
+  padding:10px;
 }
