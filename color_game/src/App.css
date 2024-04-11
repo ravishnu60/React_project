@@ -1,3 +1,7 @@
+.text-color{
+    color: rgb(240, 0, 200);
+}
+
 .selected-color {
     padding: 20px;
     margin: 5px;
@@ -16,5 +20,5 @@
 }
 
 #attempt{
-    border-left:2px solid black;
+    border-left:2px solid rgb(28, 238, 0);
 }

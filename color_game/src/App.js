@@ -84,7 +84,7 @@ function App() {
       <h5 className="small text-center">I gussed four color, Can you find those in same order ?</h5>
       <div className="mx-1 row border border-danger rounded full-page">
         <div className="col-lg-6 col-sm-12">
-          <p className="mb-0 mt-3">Select Any four Color ? </p>
+          <p className="mb-0 mt-3 text-color">Select any below four Color</p>
           <div className="row mb-3">
             {color.map((item, index) =>
               <div key={index} className="col-lg-2 col-4 p-2">
@@ -94,7 +94,7 @@ function App() {
           </div>
           {displayResult()}
         </div>
-        <div id="attempt" className="col-lg-6 col-sm-12 scroll">
+        <div id="attempt" className="col-lg-6 col-sm-12 scroll border-start border-top border-success">
           {resultList.map((item, index) =>
             <div key={index}>
               <h5>Attempt : {index + 1}</h5>
