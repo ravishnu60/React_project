@@ -3,7 +3,7 @@ import './App.css';
 import win from './Assets/win.gif';
 
 function App() {
-  const color= ['red', 'blue', 'green', 'yellow', 'orange', 'white'];
+  const color = ['red', 'blue', 'green', 'yellow', 'orange', 'white'];
   const colorCode = { red: '#ff4a4ae8', blue: '#0183f3e8', green: '#2ca530e8', yellow: '#f5f900e8', orange: '#fb9906e8', black: '#000000e8', white: '#fff' }
   const resultVal = { 'crt': 0, 'crtWrg': 0, 'wrg': 0 };
   const [StaticColor, setStaticColor] = useState(color);
@@ -63,7 +63,7 @@ function App() {
             <img src={win} alt="Victory" className="victory mb-3" /><br />
             <div className="d-flex justify-content-center mb-2">
               <div className="alert alert-success p-1 me-2 mb-0 font">Wow! You found all the colors.</div>
-              <button className="btn text-light restart btn-sm" onClick={() => {setResultList([]); setStaticColor(color)}}>Play Again</button>
+              <button className="btn text-light restart btn-sm" onClick={() => { setResultList([]); setStaticColor(color) }}>Play Again</button>
             </div>
           </div>
         </>
@@ -103,15 +103,17 @@ function App() {
           </div>
           {displayResult()}
         </div>
-        <div id="attempt" className={`col-lg-6 col-sm-12 ${displayResult() ? 'text-scroll' : 'scroll'}`}>
-          {resultList.map((item, index) =>
-            <div key={index}>
-              <h5 className="font">Attempt : {index + 1}</h5>
-              {item.color?.map((color, index) => <span key={index} style={{ backgroundColor: colorCode[color] }} className="selected-color"></span>)}
-              {/* <p>{item?.color?.join(" ")}</p> */}
-              {item?.result && <p className="mt-2 font">{`Right color in right place : ${item?.result['crt']}, Right color but wrong place : ${item?.result['crtWrg']}, Wrong color : ${item?.result['wrg']}`}</p>}
-            </div>
-          )}
+        <div id="attempt" className={`col-lg-6 col-sm-12 pt-2 ${displayResult() ? 'text-scroll' : 'scroll'}`}>
+          <div className="row">
+            {resultList.map((item, index) =>
+              <div key={index} className="col-lg-4 col-md-4 col-6 border-bottom border-info">
+                <h5 className="font-attempt">Attempt : {index + 1}</h5>
+                {item.color?.map((color, index) => <span key={index} style={{ backgroundColor: colorCode[color] }} className="selected-color"></span>)}
+                {/* <p>{item?.color?.join(" ")}</p> */}
+                {item?.result && <p className="mt-2 font">Correct color: <span className="sp1">{item?.result['crt']}</span><br />Wrong order: <span className="sp2">{item?.result['crtWrg']}</span><br />Wrong color: <span className="sp3">{item?.result['wrg']}</span></p>}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

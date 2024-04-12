@@ -2,12 +2,20 @@
     color: rgb(240, 0, 200);
 }
 
-.selected-color {
+/* .selected-color {
     padding: 20px;
     margin: 5px;
     padding-top: 0px;
     padding-bottom: 0px;
     border-radius: 20px;
+} */
+
+.selected-color{
+    padding: 9px;
+    margin: 3px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-radius: 15px;
 }
 
 .full-page {
@@ -22,6 +30,22 @@
     border-left: 2px solid #00e3ee94;
 }
 
+.sp1, .sp2, .sp3{
+    font-weight: bold;
+}
+
+.sp1{
+    color: green;
+}
+
+.sp2{
+    color: yellow;
+}
+
+.sp3{
+    color: red;
+}
+
 .victory{
     width: 30vh;
     border-radius: 15px;
@@ -31,6 +55,11 @@
 
 .restart{
     border: 2px dotted #04f16f;
+}
+
+.font-attempt{
+    color: #8dbd00 !important;
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 768px) {
@@ -52,5 +81,11 @@
 
     .font {
         font-size: smaller !important;
+    }
+
+    .font-attempt{
+        font-size: smaller !important;
+        font-weight: bold !important;
+        color: #8dbd00 !important;
     }
 }
