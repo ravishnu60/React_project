@@ -33,23 +33,37 @@ function App() {
   }
 
   const userChoice = (color) => {
-    let tempusrColor = [...userColor];
-    let tempResult = { ...userColor.length === 0 ? resultVal : result };
+    //make latest result empty
+    setResult(resultVal);
 
+    let tempusrColor = [...userColor];
     tempusrColor.push(color);
-    if (genColor.some(item => item === color)) {
-      tempusrColor.indexOf(color) === genColor.indexOf(color) ? ++tempResult['crt'] : ++tempResult['crtWrg']
-    } else {
-      ++tempResult['wrg']
-    }
     setUserColor(tempusrColor);
-    setResult(tempResult);
+  }
+
+  const removeChoice = (item) => {
+    let tempusrColor = [...userColor];
+    tempusrColor.splice(tempusrColor.indexOf(item), 1);
+    setUserColor(tempusrColor);
   }
 
   const finalResult = () => {
+    let tempResult = { ...resultVal };
+
+    //Result calculations
+    genColor.forEach((item, index) => {
+      if (userColor.some(itemC => itemC === item)) {
+        userColor.indexOf(color) === index ? ++tempResult['crt'] : ++tempResult['crtWrg']
+      } else {
+        ++tempResult['wrg']
+      }
+    });
+    tempResult['wrg'] === 0 && setStaticColor(userColor);
+
     let temp = [...resultList]
-    result['wrg'] === 0 && setStaticColor(userColor)
-    temp.push({ color: userColor, result: result });
+    temp.push({ color: userColor, result: tempResult });
+
+    setResult(tempResult);
     setResultList(temp);
     setUserColor([]);
   }
@@ -99,6 +113,12 @@ function App() {
               <div key={index} className="col-lg-2 col-4 p-2">
                 <button className="btn btn-sm form-control" style={{ backgroundColor: colorCode[item], color: ['yellow', 'white'].includes(item) ? 'black' : 'white' }} disabled={disabledSelected(item)} onClick={() => userChoice(item)}>{item}</button>
               </div>
+            )}
+          </div>
+          <h5 className="font">Selected order: </h5>
+          <div className="d-flex">
+            {userColor.map((item, index) =>
+              <button className="btn btn-sm px-3 mx-1" style={{ backgroundColor: colorCode[item], color: ['yellow', 'white'].includes(item) ? 'black' : 'white' }} onClick={() => { removeChoice(index) }} >X</button>
             )}
           </div>
           {displayResult()}
