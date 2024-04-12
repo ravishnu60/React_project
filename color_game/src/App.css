@@ -1,4 +1,4 @@
-.text-color{
+.text-color {
     color: rgb(240, 0, 200);
 }
 
@@ -10,15 +10,37 @@
     border-radius: 20px;
 }
 
-.full-page{
-    min-height: 90vh;
+.full-page {
+    min-height: 87vh;
+    border: 2px groove #ff8800cc;
+    border-radius: 15px;
 }
 
-.scroll{
+.scroll, .text-scroll {
     max-height: 90vh;
     overflow: auto;
+    border-left: 2px solid #00e3ee94;
 }
 
-#attempt{
-    border-left:2px solid rgb(28, 238, 0);
+
+@media only screen and (max-width: 768px) {
+
+    /* For mobile phones: */
+    .scroll {
+        max-height: 60vh;
+        overflow: auto;
+        border-left: none;
+        border-top: 2px solid #00e3ee94;
+    }
+
+    .text-scroll {
+        max-height: 40vh;
+        overflow: auto;
+        border-left: none;
+        border-top: 2px solid #00e3ee94;
+    }
+
+    .font {
+        font-size: smaller !important;
+    }
 }
