@@ -37,14 +37,14 @@
 
     /* For mobile phones: */
     .scroll {
-        max-height: 60vh;
+        max-height: 61vh;
         overflow: auto;
         border-left: none;
         border-top: 2px solid #00e3ee94;
     }
 
     .text-scroll {
-        max-height: 40vh;
+        max-height:50vh;
         overflow: auto;
         border-left: none;
         border-top: 2px solid #00e3ee94;
