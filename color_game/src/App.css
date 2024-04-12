@@ -22,6 +22,16 @@
     border-left: 2px solid #00e3ee94;
 }
 
+.victory{
+    width: 30vh;
+    border-radius: 15px;
+    box-shadow: 2px 2px 20px 3px #ffa330;
+    padding: 5px;
+}
+
+.restart{
+    border: 2px dotted #04f16f;
+}
 
 @media only screen and (max-width: 768px) {
 

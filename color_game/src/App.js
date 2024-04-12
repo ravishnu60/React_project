@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import './App.css';
+import win from './Assets/win.gif';
 
 function App() {
-
-  const colorCode = { red: '#ff4a4ae8', blue: '#0183f3e8', green: '#2ca530e8', yellow: '#f5f900e8', orange: '#fb9906e8', black: '#000000e8', white:'#fff' }
+  const color= ['red', 'blue', 'green', 'yellow', 'orange', 'white'];
+  const colorCode = { red: '#ff4a4ae8', blue: '#0183f3e8', green: '#2ca530e8', yellow: '#f5f900e8', orange: '#fb9906e8', black: '#000000e8', white: '#fff' }
   const resultVal = { 'crt': 0, 'crtWrg': 0, 'wrg': 0 };
-  const [StaticColor, setStaticColor] = useState(['red', 'blue', 'green', 'yellow', 'orange', 'white']);
+  const [StaticColor, setStaticColor] = useState(color);
 
   const [userColor, setUserColor] = useState([]);
   const [genColor, setGenColor] = useState([]);
@@ -28,7 +29,7 @@ function App() {
   }
 
   const disabledSelected = (color) => {
-    return userColor.some(item => item === color) || userColor.length === 4
+    return userColor.some(item => item === color) || userColor.length === 4 || resultList[resultList.length - 1]?.result['crt'] === 4
   }
 
   const userChoice = (color) => {
@@ -47,7 +48,7 @@ function App() {
 
   const finalResult = () => {
     let temp = [...resultList]
-    result['wrg'] === 0 &&  setStaticColor(userColor)
+    result['wrg'] === 0 && setStaticColor(userColor)
     temp.push({ color: userColor, result: result });
     setResultList(temp);
     setUserColor([]);
@@ -57,8 +58,15 @@ function App() {
     let total = result['crt'] + result['crtWrg'] + result['wrg'];
     if (total === 4) {
       if (result['crt'] === 4) {
-        return (
-          <div className="alert alert-success p-1 font">Wow! You found all the colors.</div>
+        return (<>
+          <div className="text-center">
+            <img src={win} alt="Victory" className="victory mb-3" /><br />
+            <div className="d-flex justify-content-center mb-2">
+              <div className="alert alert-success p-1 me-2 mb-0 font">Wow! You found all the colors.</div>
+              <button className="btn text-light restart btn-sm" onClick={() => {setResultList([]); setStaticColor(color)}}>Play Again</button>
+            </div>
+          </div>
+        </>
         )
       } else {
         return (
@@ -85,17 +93,17 @@ function App() {
       <h5 className="small text-center">I gussed four color, Can you find those in same order ?</h5>
       <div className="mx-1 row full-page">
         <div className="col-lg-6 col-sm-12">
-          <p className="mb-0 mt-3 text-color font">Select any below four Color</p>
-          <div className="row mb-3">
+          <p className="mb-0 mt-3 text-color text-center font">Select any below four Color</p>
+          <div className="row mb-3 d-flex justify-content-center">
             {StaticColor.map((item, index) =>
               <div key={index} className="col-lg-2 col-4 p-2">
-                <button className="btn btn-sm" style={{ backgroundColor: colorCode[item], color: ['yellow', 'white'].includes(item) ? 'black' : 'white' }} disabled={disabledSelected(item)} onClick={() => userChoice(item)}>{item}</button>
+                <button className="btn btn-sm form-control" style={{ backgroundColor: colorCode[item], color: ['yellow', 'white'].includes(item) ? 'black' : 'white' }} disabled={disabledSelected(item)} onClick={() => userChoice(item)}>{item}</button>
               </div>
             )}
           </div>
           {displayResult()}
         </div>
-        <div id="attempt" className={`col-lg-6 col-sm-12 ${displayResult() ? 'text-scroll':'scroll'}`}>
+        <div id="attempt" className={`col-lg-6 col-sm-12 ${displayResult() ? 'text-scroll' : 'scroll'}`}>
           {resultList.map((item, index) =>
             <div key={index}>
               <h5 className="font">Attempt : {index + 1}</h5>
