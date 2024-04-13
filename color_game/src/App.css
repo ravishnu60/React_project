@@ -2,15 +2,7 @@
     color: rgb(240, 0, 200);
 }
 
-/* .selected-color {
-    padding: 20px;
-    margin: 5px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    border-radius: 20px;
-} */
-
-.selected-color{
+.selected-color {
     padding: 9px;
     margin: 3px;
     padding-top: 0px;
@@ -20,44 +12,67 @@
 
 .full-page {
     min-height: 87vh;
-    border: 2px groove #ff8800cc;
+    border: 1px groove #ff8800cc;
     border-radius: 15px;
+    animation: changeColor 2s;
+    animation-iteration-count: infinite;
 }
 
-.scroll, .text-scroll {
+@keyframes changeColor {
+    10% {
+        border-color: #ff0000;
+    }
+
+    40% {
+        border-color: #ff9900;
+    }
+
+    80% {
+        border-color: #0099ff;
+    }
+
+    100% {
+        border-color: #c6fa2c;
+    }
+}
+
+.scroll,
+.text-scroll {
     max-height: 90vh;
     overflow: auto;
     border-left: 2px solid #00e3ee94;
 }
 
-.sp1, .sp2, .sp3{
+.sp1,
+.sp2,
+.sp3 {
     font-weight: bold;
 }
 
-.sp1{
+.sp1 {
     color: green;
 }
 
-.sp2{
+.sp2 {
     color: yellow;
 }
 
-.sp3{
+.sp3 {
     color: red;
 }
 
-.victory{
+.victory {
     width: 30vh;
     border-radius: 15px;
     box-shadow: 2px 2px 20px 3px #ffa330;
     padding: 5px;
 }
 
-.restart{
+.restart {
     border: 2px dotted #04f16f;
 }
 
-.font-attempt{
+.font-attempt {
     color: #8dbd00 !important;
     font-weight: bold;
 }
@@ -73,7 +88,7 @@
     }
 
     .text-scroll {
-        max-height:50vh;
+        max-height: 50vh;
         overflow: auto;
         border-left: none;
         border-top: 2px solid #00e3ee94;
@@ -83,7 +98,7 @@
         font-size: smaller !important;
     }
 
-    .font-attempt{
+    .font-attempt {
         font-size: smaller !important;
         font-weight: bold !important;
         color: #8dbd00 !important;
