@@ -99,7 +99,7 @@ function App() {
             <img src={win} alt="Victory" className="victory mb-3" /><br />
             <div className="d-flex justify-content-center mb-2">
               <div className="alert alert-success p-1 me-2 mb-0 font">Wow! You found all the colors.</div>
-              <button className="btn text-light restart btn-sm" onClick={() => { setResultList([]); setStaticColor(color); setResult(resultVal); }}>Play Again</button>
+              <button className="btn text-light restart btn-sm" onClick={() => { setclue({}); setResultList([]); setStaticColor(color); setResult(resultVal); }}>Play Again</button>
             </div>
           </div>
         </>
