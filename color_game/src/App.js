@@ -18,7 +18,6 @@ function App() {
   const randomNum = (sortcolor) => {
     return Math.floor(Math.random() * sortcolor.length);
   };
-  console.log(genColor);
 
   //Generate random color
   const generateColor = () => {
@@ -130,8 +129,9 @@ function App() {
       <div className="mx-1 row full-page">
         <div className="col-lg-6 col-sm-12">
           <p className="mb-0 mt-3 text-color text-center font">Select any below four Color</p>
+          {/* Clue   */}
           <div className="text-end">
-            {clue?.color && <span className="mx-2" style={{ color: colorCode[clue?.color] }}>{clue?.index} - {clue?.color}</span>}
+            {clue?.color && <span className="mx-2" style={{ color: colorCode[clue?.color] }}>{clue?.index} color {clue?.color}</span>}
             <button className="btn btn-sm border border-warning rounded-circle" onClick={getClue} disabled={clue?.index !== undefined}>
               <i className="fa fa-lightbulb text-warning"></i><sub style={{fontSize:'x-small'}}>{clue?.color ? 0:1}</sub></button>
           </div>
