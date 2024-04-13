@@ -4,7 +4,8 @@ import win from './Assets/win.gif';
 
 function App() {
   const color = ['red', 'blue', 'green', 'yellow', 'orange', 'white'];
-  const colorCode = { red: '#ff4a4ae8', blue: '#0183f3e8', green: '#2ca530e8', yellow: '#f5f900e8', orange: '#fb9906e8', black: '#000000e8', white: '#fff' }
+  const colorCode = { red: '#ff4a4ae8', blue: '#0183f3e8', green: '#2ca530e8', yellow: '#f5f900e8', orange: '#fb9906e8', white: '#fff' }
+  const selectedCode = { red: '#ff4a4a7d', blue: '#0183f387', green: '#2ca53087', yellow: '#f5f9007d', orange: '#fb99068f', white: '#ffffff9e' }
   const resultVal = { 'crt': 0, 'crtWrg': 0, 'wrg': 0 };
   const [StaticColor, setStaticColor] = useState(color);
 
@@ -12,11 +13,14 @@ function App() {
   const [genColor, setGenColor] = useState([]);
   const [result, setResult] = useState(resultVal);
   const [resultList, setResultList] = useState([]);
+  const [clue, setclue] = useState({});
 
   const randomNum = (sortcolor) => {
-    return Math.floor(Math.random() * sortcolor.length)
+    return Math.floor(Math.random() * sortcolor.length);
   };
+  console.log(genColor);
 
+  //Generate random color
   const generateColor = () => {
     let tmepColor = [...StaticColor];
     let dynamicColor = [];
@@ -28,32 +32,49 @@ function App() {
     setGenColor(dynamicColor);
   }
 
+  //disabled color when game ends
   const disabledSelected = (color) => {
-    return userColor.some(item => item === color) || userColor.length === 4 || resultList[resultList.length - 1]?.result['crt'] === 4
+    return resultList[resultList.length - 1]?.result['crt'] === 4
   }
 
-  const userChoice = (color) => {
+  const getuserColorIndex = (color) => {
+    return userColor.indexOf(color);
+  }
+
+  const getClue = () => {
+    let tempclueIndex = randomNum(genColor);
+    setclue({ index: tempclueIndex + 1, color: genColor[tempclueIndex] })
+  }
+
+  //manage user click
+  const userChoice = (color, userIndex) => {
     //make latest result empty
     setResult(resultVal);
 
-    let tempusrColor = [...userColor];
-    tempusrColor.push(color);
-    setUserColor(tempusrColor);
+    if (userIndex === -1) {
+      let tempusrColor = [...userColor];
+      tempusrColor.push(color);
+      setUserColor(tempusrColor);
+    } else {
+      removeChoice(color)
+    }
   }
 
+  //remove user choice
   const removeChoice = (item) => {
     let tempusrColor = [...userColor];
     tempusrColor.splice(tempusrColor.indexOf(item), 1);
     setUserColor(tempusrColor);
   }
 
+  //  calculate result
   const finalResult = () => {
     let tempResult = { ...resultVal };
 
     //Result calculations
     genColor.forEach((item, index) => {
       if (userColor.some(itemC => itemC === item)) {
-        userColor.indexOf(color) === index ? ++tempResult['crt'] : ++tempResult['crtWrg']
+        getuserColorIndex(item) === index ? ++tempResult['crt'] : ++tempResult['crtWrg']
       } else {
         ++tempResult['wrg']
       }
@@ -68,6 +89,7 @@ function App() {
     setUserColor([]);
   }
 
+  //Display result
   const displayResult = () => {
     let total = result['crt'] + result['crtWrg'] + result['wrg'];
     if (total === 4) {
@@ -77,7 +99,7 @@ function App() {
             <img src={win} alt="Victory" className="victory mb-3" /><br />
             <div className="d-flex justify-content-center mb-2">
               <div className="alert alert-success p-1 me-2 mb-0 font">Wow! You found all the colors.</div>
-              <button className="btn text-light restart btn-sm" onClick={() => { setResultList([]); setStaticColor(color) }}>Play Again</button>
+              <button className="btn text-light restart btn-sm" onClick={() => { setResultList([]); setStaticColor(color); setResult(resultVal); }}>Play Again</button>
             </div>
           </div>
         </>
@@ -108,19 +130,25 @@ function App() {
       <div className="mx-1 row full-page">
         <div className="col-lg-6 col-sm-12">
           <p className="mb-0 mt-3 text-color text-center font">Select any below four Color</p>
+          <div className="text-end">
+            {clue?.color && <span className="mx-2" style={{ color: colorCode[clue?.color] }}>{clue?.index} - {clue?.color}</span>}
+            <button className="btn btn-sm border border-warning rounded-circle" onClick={getClue} disabled={clue?.index !== undefined}>
+              <i className="fa fa-lightbulb text-warning"></i><sub style={{fontSize:'x-small'}}>{clue?.color ? 0:1}</sub></button>
+          </div>
           <div className="row mb-3 d-flex justify-content-center">
             {StaticColor.map((item, index) =>
               <div key={index} className="col-lg-2 col-4 p-2">
-                <button className="btn btn-sm form-control" style={{ backgroundColor: colorCode[item], color: ['yellow', 'white'].includes(item) ? 'black' : 'white' }} disabled={disabledSelected(item)} onClick={() => userChoice(item)}>{item}</button>
+                <button
+                  className="btn btn-sm form-control"
+                  style={{backgroundColor: getuserColorIndex(item) === -1 ? colorCode[item] : selectedCode[item], color: ['yellow', 'white'].includes(item) ? 'black' : 'white' }}
+                  disabled={disabledSelected()}
+                  onClick={() => userChoice(item, getuserColorIndex(item))}>
+                  {getuserColorIndex(item) !== -1 ? getuserColorIndex(item) + 1 : item}
+                </button>
               </div>
             )}
           </div>
-          <h5 className="font">Selected order: </h5>
-          <div className="d-flex">
-            {userColor.map((item, index) =>
-              <button className="btn btn-sm px-3 mx-1" style={{ backgroundColor: colorCode[item], color: ['yellow', 'white'].includes(item) ? 'black' : 'white' }} onClick={() => { removeChoice(index) }} >X</button>
-            )}
-          </div>
+          {/* Display result when select continuous four color */}
           {displayResult()}
         </div>
         <div id="attempt" className={`col-lg-6 col-sm-12 pt-2 ${displayResult() ? 'text-scroll' : 'scroll'}`}>
