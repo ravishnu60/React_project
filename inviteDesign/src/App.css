@@ -10,3 +10,12 @@
   overflow:hidden;
   padding:10px;
 }
+
+.divpic{
+  background-color: #ff887f;
+  height: 100px;
+  width: 100px;
+  top:0;
+  position: absolute;
+  mix-blend-mode: hue;
+}
